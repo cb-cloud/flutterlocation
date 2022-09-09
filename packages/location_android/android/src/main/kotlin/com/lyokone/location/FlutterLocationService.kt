@@ -90,7 +90,10 @@ class FlutterLocationService() : Service(),
                             .requiredPermissions(
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                                     arrayOf(
-                                        Manifest.permission.ACCESS_FINE_LOCATION,
+                                        //ACCESS_FINE_LOCATION と ACCESS_BACKGROUND_LOCATION　の２つの権限を同時に要求しない
+                                        //https://stackoverflow.com/a/69672683
+                                        //enableBackgroundModeが実行されるとき、権限はalwaysになっている前提。
+                                        //Manifest.permission.ACCESS_FINE_LOCATION,
                                         Manifest.permission.ACCESS_BACKGROUND_LOCATION
                                     )
                                 } else {
