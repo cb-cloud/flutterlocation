@@ -147,22 +147,22 @@ class LocationPlugin : FlutterPlugin, ActivityAware, LocationListener,
                 .setLongitude(location.longitude)
                 .setAccuracy(location.accuracy.toDouble())
                 .setAltitude(location.altitude)
-                .setBearing(location.bearing.toDouble())
-                .setElaspedRealTimeNanos(location.elapsedRealtimeNanos.toDouble())
+                // .setBearing(location.bearing.toDouble())
+                // .setElaspedRealTimeNanos(location.elapsedRealtimeNanos.toDouble())
                 .setIsMock(location.isFromMockProvider)
-                .setSatellites(location.extras.getInt("satellites").toLong())
-                .setSpeed(location.speed.toDouble())
+                // .setSatellites(location.extras.getInt("satellites").toLong())
+                // .setSpeed(location.speed.toDouble())
 
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            locationBuilder.setBearingAccuracyDegrees(location.bearingAccuracyDegrees.toDouble())
-                .setSpeedAccuracy(location.speedAccuracyMetersPerSecond.toDouble())
-                .setVerticalAccuracy(location.verticalAccuracyMeters.toDouble())
-        }
+        // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        //     locationBuilder.setBearingAccuracyDegrees(location.bearingAccuracyDegrees.toDouble())
+        //         .setSpeedAccuracy(location.speedAccuracyMetersPerSecond.toDouble())
+        //         .setVerticalAccuracy(location.verticalAccuracyMeters.toDouble())
+        // }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            locationBuilder.setElaspedRealTimeUncertaintyNanos(location.elapsedRealtimeUncertaintyNanos)
-        }
+        // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        //     locationBuilder.setElaspedRealTimeUncertaintyNanos(location.elapsedRealtimeUncertaintyNanos)
+        // }
 
 
         val pigeonLocationData = locationBuilder.build()
