@@ -140,7 +140,7 @@ class LocationPlugin : FlutterPlugin, ActivityAware, LocationListener,
     }
 
     override fun onLocationChanged(location: Location?) {
-        Log.d("LOCATION", location?.latitude.toString() + " " + location?.longitude.toString())
+        Log.d("LOCATION", location?.latitude.toString() + " " + location?.longitude.toString()+ " " + location.accuracy.toDouble())
 
         val locationBuilder =
             GeneratedAndroidLocation.PigeonLocationData.Builder().setLatitude(location!!.latitude)
