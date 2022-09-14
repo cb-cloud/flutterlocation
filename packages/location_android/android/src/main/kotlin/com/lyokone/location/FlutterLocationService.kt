@@ -85,25 +85,25 @@ class FlutterLocationService() : Service(),
             val locationConfiguration =
                 LocationConfiguration.Builder()
                     .keepTracking(true)
-                    .askForPermission(
-                        PermissionConfiguration.Builder()
-                            .requiredPermissions(
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                                    arrayOf(
-                                        //ACCESS_FINE_LOCATION と ACCESS_BACKGROUND_LOCATION　の２つの権限を同時に要求しない
-                                        //https://stackoverflow.com/a/69672683
-                                        //enableBackgroundModeが実行されるとき、権限はalwaysになっている前提。
-                                        //Manifest.permission.ACCESS_FINE_LOCATION,
-                                        Manifest.permission.ACCESS_BACKGROUND_LOCATION
-                                    )
-                                } else {
-                                    arrayOf(
-                                        Manifest.permission.ACCESS_FINE_LOCATION,
-                                    )
-                                }
-                            )
-                            .build()
-                    )
+                    // .askForPermission(
+                    //     PermissionConfiguration.Builder()
+                    //         .requiredPermissions(
+                    //             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    //                 arrayOf(
+                    //                     //ACCESS_FINE_LOCATION と ACCESS_BACKGROUND_LOCATION　の２つの権限を同時に要求しない
+                    //                     //https://stackoverflow.com/a/69672683
+                    //                     //enableBackgroundModeが実行されるとき、権限はalwaysになっている前提。
+                    //                     //Manifest.permission.ACCESS_FINE_LOCATION,
+                    //                     Manifest.permission.ACCESS_BACKGROUND_LOCATION
+                    //                 )
+                    //             } else {
+                    //                 arrayOf(
+                    //                     Manifest.permission.ACCESS_FINE_LOCATION,
+                    //                 )
+                    //             }
+                    //         )
+                    //         .build()
+                    // )
                     .useGooglePlayServices(GooglePlayServicesConfiguration.Builder().build())
                     .useDefaultProviders(DefaultProviderConfiguration.Builder().build())
                     .build()
