@@ -26,28 +26,28 @@ typedef NS_ENUM(NSUInteger, PigeonLocationAccuracy) {
     accuracy:(nullable NSNumber *)accuracy
     altitude:(nullable NSNumber *)altitude
     bearing:(nullable NSNumber *)bearing
-    bearingAccuracyDegrees:(nullable NSNumber *)bearingAccuracyDegrees
-    elaspedRealTimeNanos:(nullable NSNumber *)elaspedRealTimeNanos
-    elaspedRealTimeUncertaintyNanos:(nullable NSNumber *)elaspedRealTimeUncertaintyNanos
-    satellites:(nullable NSNumber *)satellites
-    speed:(nullable NSNumber *)speed
-    speedAccuracy:(nullable NSNumber *)speedAccuracy
-    time:(nullable NSNumber *)time
-    verticalAccuracy:(nullable NSNumber *)verticalAccuracy
+    // bearingAccuracyDegrees:(nullable NSNumber *)bearingAccuracyDegrees
+    // elaspedRealTimeNanos:(nullable NSNumber *)elaspedRealTimeNanos
+    // elaspedRealTimeUncertaintyNanos:(nullable NSNumber *)elaspedRealTimeUncertaintyNanos
+    // satellites:(nullable NSNumber *)satellites
+    // speed:(nullable NSNumber *)speed
+    // speedAccuracy:(nullable NSNumber *)speedAccuracy
+    // time:(nullable NSNumber *)time
+    // verticalAccuracy:(nullable NSNumber *)verticalAccuracy
     isMock:(nullable NSNumber *)isMock;
 @property(nonatomic, strong, nullable) NSNumber * latitude;
 @property(nonatomic, strong, nullable) NSNumber * longitude;
 @property(nonatomic, strong, nullable) NSNumber * accuracy;
 @property(nonatomic, strong, nullable) NSNumber * altitude;
-@property(nonatomic, strong, nullable) NSNumber * bearing;
-@property(nonatomic, strong, nullable) NSNumber * bearingAccuracyDegrees;
-@property(nonatomic, strong, nullable) NSNumber * elaspedRealTimeNanos;
-@property(nonatomic, strong, nullable) NSNumber * elaspedRealTimeUncertaintyNanos;
-@property(nonatomic, strong, nullable) NSNumber * satellites;
-@property(nonatomic, strong, nullable) NSNumber * speed;
-@property(nonatomic, strong, nullable) NSNumber * speedAccuracy;
-@property(nonatomic, strong, nullable) NSNumber * time;
-@property(nonatomic, strong, nullable) NSNumber * verticalAccuracy;
+// @property(nonatomic, strong, nullable) NSNumber * bearing;
+// @property(nonatomic, strong, nullable) NSNumber * bearingAccuracyDegrees;
+// @property(nonatomic, strong, nullable) NSNumber * elaspedRealTimeNanos;
+// @property(nonatomic, strong, nullable) NSNumber * elaspedRealTimeUncertaintyNanos;
+// @property(nonatomic, strong, nullable) NSNumber * satellites;
+// @property(nonatomic, strong, nullable) NSNumber * speed;
+// @property(nonatomic, strong, nullable) NSNumber * speedAccuracy;
+// @property(nonatomic, strong, nullable) NSNumber * time;
+// @property(nonatomic, strong, nullable) NSNumber * verticalAccuracy;
 @property(nonatomic, strong, nullable) NSNumber * isMock;
 - (NSDictionary *)toMap;
 @end

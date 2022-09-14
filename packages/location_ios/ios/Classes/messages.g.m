@@ -53,29 +53,29 @@ static id GetNullableObjectAtIndex(NSArray* array, NSInteger key) {
     accuracy:(nullable NSNumber *)accuracy
     altitude:(nullable NSNumber *)altitude
     bearing:(nullable NSNumber *)bearing
-    bearingAccuracyDegrees:(nullable NSNumber *)bearingAccuracyDegrees
-    elaspedRealTimeNanos:(nullable NSNumber *)elaspedRealTimeNanos
-    elaspedRealTimeUncertaintyNanos:(nullable NSNumber *)elaspedRealTimeUncertaintyNanos
-    satellites:(nullable NSNumber *)satellites
-    speed:(nullable NSNumber *)speed
-    speedAccuracy:(nullable NSNumber *)speedAccuracy
-    time:(nullable NSNumber *)time
-    verticalAccuracy:(nullable NSNumber *)verticalAccuracy
+    // bearingAccuracyDegrees:(nullable NSNumber *)bearingAccuracyDegrees
+    // elaspedRealTimeNanos:(nullable NSNumber *)elaspedRealTimeNanos
+    // elaspedRealTimeUncertaintyNanos:(nullable NSNumber *)elaspedRealTimeUncertaintyNanos
+    // satellites:(nullable NSNumber *)satellites
+    // speed:(nullable NSNumber *)speed
+    // speedAccuracy:(nullable NSNumber *)speedAccuracy
+    // time:(nullable NSNumber *)time
+    // verticalAccuracy:(nullable NSNumber *)verticalAccuracy
     isMock:(nullable NSNumber *)isMock {
   PigeonLocationData* pigeonResult = [[PigeonLocationData alloc] init];
   pigeonResult.latitude = latitude;
   pigeonResult.longitude = longitude;
   pigeonResult.accuracy = accuracy;
   pigeonResult.altitude = altitude;
-  pigeonResult.bearing = bearing;
-  pigeonResult.bearingAccuracyDegrees = bearingAccuracyDegrees;
-  pigeonResult.elaspedRealTimeNanos = elaspedRealTimeNanos;
-  pigeonResult.elaspedRealTimeUncertaintyNanos = elaspedRealTimeUncertaintyNanos;
-  pigeonResult.satellites = satellites;
-  pigeonResult.speed = speed;
-  pigeonResult.speedAccuracy = speedAccuracy;
-  pigeonResult.time = time;
-  pigeonResult.verticalAccuracy = verticalAccuracy;
+  // pigeonResult.bearing = bearing;
+  // pigeonResult.bearingAccuracyDegrees = bearingAccuracyDegrees;
+  // pigeonResult.elaspedRealTimeNanos = elaspedRealTimeNanos;
+  // pigeonResult.elaspedRealTimeUncertaintyNanos = elaspedRealTimeUncertaintyNanos;
+  // pigeonResult.satellites = satellites;
+  // pigeonResult.speed = speed;
+  // pigeonResult.speedAccuracy = speedAccuracy;
+  // pigeonResult.time = time;
+  // pigeonResult.verticalAccuracy = verticalAccuracy;
   pigeonResult.isMock = isMock;
   return pigeonResult;
 }
@@ -85,15 +85,15 @@ static id GetNullableObjectAtIndex(NSArray* array, NSInteger key) {
   pigeonResult.longitude = GetNullableObject(dict, @"longitude");
   pigeonResult.accuracy = GetNullableObject(dict, @"accuracy");
   pigeonResult.altitude = GetNullableObject(dict, @"altitude");
-  pigeonResult.bearing = GetNullableObject(dict, @"bearing");
-  pigeonResult.bearingAccuracyDegrees = GetNullableObject(dict, @"bearingAccuracyDegrees");
-  pigeonResult.elaspedRealTimeNanos = GetNullableObject(dict, @"elaspedRealTimeNanos");
-  pigeonResult.elaspedRealTimeUncertaintyNanos = GetNullableObject(dict, @"elaspedRealTimeUncertaintyNanos");
-  pigeonResult.satellites = GetNullableObject(dict, @"satellites");
-  pigeonResult.speed = GetNullableObject(dict, @"speed");
-  pigeonResult.speedAccuracy = GetNullableObject(dict, @"speedAccuracy");
-  pigeonResult.time = GetNullableObject(dict, @"time");
-  pigeonResult.verticalAccuracy = GetNullableObject(dict, @"verticalAccuracy");
+  // pigeonResult.bearing = GetNullableObject(dict, @"bearing");
+  // pigeonResult.bearingAccuracyDegrees = GetNullableObject(dict, @"bearingAccuracyDegrees");
+  // pigeonResult.elaspedRealTimeNanos = GetNullableObject(dict, @"elaspedRealTimeNanos");
+  // pigeonResult.elaspedRealTimeUncertaintyNanos = GetNullableObject(dict, @"elaspedRealTimeUncertaintyNanos");
+  // pigeonResult.satellites = GetNullableObject(dict, @"satellites");
+  // pigeonResult.speed = GetNullableObject(dict, @"speed");
+  // pigeonResult.speedAccuracy = GetNullableObject(dict, @"speedAccuracy");
+  // pigeonResult.time = GetNullableObject(dict, @"time");
+  // pigeonResult.verticalAccuracy = GetNullableObject(dict, @"verticalAccuracy");
   pigeonResult.isMock = GetNullableObject(dict, @"isMock");
   return pigeonResult;
 }
@@ -104,15 +104,15 @@ static id GetNullableObjectAtIndex(NSArray* array, NSInteger key) {
     @"longitude" : (self.longitude ?: [NSNull null]),
     @"accuracy" : (self.accuracy ?: [NSNull null]),
     @"altitude" : (self.altitude ?: [NSNull null]),
-    @"bearing" : (self.bearing ?: [NSNull null]),
-    @"bearingAccuracyDegrees" : (self.bearingAccuracyDegrees ?: [NSNull null]),
-    @"elaspedRealTimeNanos" : (self.elaspedRealTimeNanos ?: [NSNull null]),
-    @"elaspedRealTimeUncertaintyNanos" : (self.elaspedRealTimeUncertaintyNanos ?: [NSNull null]),
-    @"satellites" : (self.satellites ?: [NSNull null]),
-    @"speed" : (self.speed ?: [NSNull null]),
-    @"speedAccuracy" : (self.speedAccuracy ?: [NSNull null]),
-    @"time" : (self.time ?: [NSNull null]),
-    @"verticalAccuracy" : (self.verticalAccuracy ?: [NSNull null]),
+    // @"bearing" : (self.bearing ?: [NSNull null]),
+    // @"bearingAccuracyDegrees" : (self.bearingAccuracyDegrees ?: [NSNull null]),
+    // @"elaspedRealTimeNanos" : (self.elaspedRealTimeNanos ?: [NSNull null]),
+    // @"elaspedRealTimeUncertaintyNanos" : (self.elaspedRealTimeUncertaintyNanos ?: [NSNull null]),
+    // @"satellites" : (self.satellites ?: [NSNull null]),
+    // @"speed" : (self.speed ?: [NSNull null]),
+    // @"speedAccuracy" : (self.speedAccuracy ?: [NSNull null]),
+    // @"time" : (self.time ?: [NSNull null]),
+    // @"verticalAccuracy" : (self.verticalAccuracy ?: [NSNull null]),
     @"isMock" : (self.isMock ?: [NSNull null]),
   };
 }
