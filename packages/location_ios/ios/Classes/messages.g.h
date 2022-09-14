@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, PigeonLocationAccuracy) {
     longitude:(nullable NSNumber *)longitude
     accuracy:(nullable NSNumber *)accuracy
     altitude:(nullable NSNumber *)altitude
-    bearing:(nullable NSNumber *)bearing
+    // bearing:(nullable NSNumber *)bearing
     // bearingAccuracyDegrees:(nullable NSNumber *)bearingAccuracyDegrees
     // elaspedRealTimeNanos:(nullable NSNumber *)elaspedRealTimeNanos
     // elaspedRealTimeUncertaintyNanos:(nullable NSNumber *)elaspedRealTimeUncertaintyNanos
