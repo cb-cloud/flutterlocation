@@ -29,11 +29,11 @@ dependencies:
     sdk: flutter
   location_android: 
     git:
-        url: https://github.com/YukiKitaike716/flutterlocation.git
+        url: https://github.com/cb-cloud/flutterlocation.git
         path: packages/location_android
   location_ios: 
     git:
-        url: https://github.com/YukiKitaike716/flutterlocation.git
+        url: https://github.com/cb-cloud/flutterlocation.git
         path: packages/location_ios
   # location_linux:
   #   path: ../location_linux
