@@ -39,7 +39,10 @@ dependencies:
   #   path: ../location_linux
   location_macos: ^5.0.0-dev.3
   location_platform_interface: ^5.0.0-dev.3
-  location_web: ^5.0.0-dev.3
+  location_web: 
+    git:
+        url: https://github.com/cb-cloud/flutterlocation.git
+        path: packages/location_web
   # location_windows:
   #   path: ../location_windows
 
