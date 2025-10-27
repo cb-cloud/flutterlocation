@@ -229,23 +229,8 @@ public class FlutterLocation
                 loc.put("latitude", location.getLatitude());
                 loc.put("longitude", location.getLongitude());
                 loc.put("accuracy", (double) location.getAccuracy());
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    loc.put("verticalAccuracy", (double) location.getVerticalAccuracyMeters());
-                    loc.put("headingAccuracy", (double) location.getBearingAccuracyDegrees());
-                }
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                    loc.put("elapsedRealtimeUncertaintyNanos", (double) location.getElapsedRealtimeUncertaintyNanos());
-                }
-
-                loc.put("provider", location.getProvider());
-                final Bundle extras = location.getExtras();
-                if (extras != null) {
-                    loc.put("satelliteNumber", location.getExtras().getInt("satellites"));
-                }
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-                    loc.put("elapsedRealtimeNanos", (double) location.getElapsedRealtimeNanos());
-
                     if (location.isFromMockProvider()) {
                         loc.put("isMock", (double) 1);
                     }
@@ -259,13 +244,6 @@ public class FlutterLocation
                 } else {
                     loc.put("altitude", mLastMslAltitude);
                 }
-
-                loc.put("speed", (double) location.getSpeed());
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    loc.put("speed_accuracy", (double) location.getSpeedAccuracyMetersPerSecond());
-                }
-                loc.put("heading", (double) location.getBearing());
-                loc.put("time", (double) location.getTime());
 
                 if (getLocationResult != null) {
                     getLocationResult.success(loc);
