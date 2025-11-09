@@ -225,25 +225,7 @@ public class FlutterLocation
             public void onLocationResult(LocationResult locationResult) {
                 super.onLocationResult(locationResult);
                 Location location = locationResult.getLastLocation();
-                HashMap<String, Object> loc = new HashMap<>();
-                loc.put("latitude", location.getLatitude());
-                loc.put("longitude", location.getLongitude());
-                loc.put("accuracy", (double) location.getAccuracy());
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-                    if (location.isFromMockProvider()) {
-                        loc.put("isMock", (double) 1);
-                    }
-                } else {
-                    loc.put("isMock", (double) 0);
-                }
-
-                // Using NMEA Data to get MSL level altitude
-                if (mLastMslAltitude == null || Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-                    loc.put("altitude", location.getAltitude());
-                } else {
-                    loc.put("altitude", mLastMslAltitude);
-                }
+                HashMap<String, Object> loc = locationToHashMap(location);
 
                 if (getLocationResult != null) {
                     getLocationResult.success(loc);
@@ -275,6 +257,39 @@ public class FlutterLocation
                 }
             };
         }
+    }
+
+    /**
+     * Converts a Location object to a HashMap for sending to Dart.
+     * Only includes essential location data: latitude, longitude, accuracy, altitude, and isMock.
+     *
+     * @param location The Location object to convert
+     * @return HashMap containing location data
+     */
+    HashMap<String, Object> locationToHashMap(Location location) {
+        HashMap<String, Object> loc = new HashMap<>();
+        loc.put("latitude", location.getLatitude());
+        loc.put("longitude", location.getLongitude());
+        loc.put("accuracy", (double) location.getAccuracy());
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            if (location.isFromMockProvider()) {
+                loc.put("isMock", (double) 1);
+            } else {
+                loc.put("isMock", (double) 0);
+            }
+        } else {
+            loc.put("isMock", (double) 0);
+        }
+
+        // Using NMEA Data to get MSL level altitude
+        if (mLastMslAltitude == null || Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+            loc.put("altitude", location.getAltitude());
+        } else {
+            loc.put("altitude", mLastMslAltitude);
+        }
+
+        return loc;
     }
 
     /**
