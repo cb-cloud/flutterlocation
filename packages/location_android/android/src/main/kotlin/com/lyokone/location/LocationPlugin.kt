@@ -28,6 +28,7 @@ import com.lyokone.location.location.listener.LocationListener
 import com.lyokone.location.location.providers.locationprovider.DefaultLocationProvider
 import com.lyokone.location.location.providers.permissionprovider.DefaultPermissionProvider
 import com.lyokone.location.location.view.ContextProcessor
+import io.flutter.embedding.engine.FlutterJNI
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -48,6 +49,8 @@ class LocationPlugin : FlutterPlugin, ActivityAware, LocationListener,
     private var locationManager: LocationManager? = null
     private var streamLocationManager: LocationManager? = null
     private var flutterLocationService: FlutterLocationService? = null
+    // Explicitly manage FlutterJNI lifecycle to avoid platform channel calls after detachment.
+    private var flutterJNI: FlutterJNI? = null
 
     private var eventChannel: EventChannel? = null
     private var eventSink: EventChannel.EventSink? = null
@@ -64,13 +67,24 @@ class LocationPlugin : FlutterPlugin, ActivityAware, LocationListener,
         context = flutterPluginBinding.applicationContext
         eventChannel = EventChannel(flutterPluginBinding.binaryMessenger, STREAM_CHANNEL_NAME)
         eventChannel?.setStreamHandler(this)
+        flutterJNI = FlutterJNI().also { it.attachToNative() }
     }
 
 
     override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
         GeneratedAndroidLocation.LocationHostApi.setup(binding.binaryMessenger, null)
-        context = null
+        eventChannel?.setStreamHandler(null)
         eventChannel = null
+        eventSink = null
+        streamLocationManager?.cancel()
+        streamLocationManager = null
+        locationManager?.cancel()
+        locationManager = null
+        resultsNeedingLocation = mutableListOf()
+        flutterLocationService?.disableBackgroundMode()
+        flutterJNI?.detachFromNativeAndReleaseResources()
+        flutterJNI = null
+        context = null
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
@@ -140,7 +154,6 @@ class LocationPlugin : FlutterPlugin, ActivityAware, LocationListener,
     }
 
     override fun onLocationChanged(location: Location?) {
-        Log.d("LOCATION2", location?.latitude.toString() + " " + location?.longitude.toString())
 
         val locationBuilder =
             GeneratedAndroidLocation.PigeonLocationData.Builder().setLatitude(location!!.latitude)
